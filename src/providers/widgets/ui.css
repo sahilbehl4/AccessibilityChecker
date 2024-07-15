@@ -1,0 +1,19 @@
+.iui-checkbox {
+    width: 16px;
+    height: 16px;
+  }
+
+.custom-button {
+  display: block;
+  margin-left: auto; 
+  margin-right: auto; 
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.new-test-modal {
+  max-height: 75vh;
+  display: grid; 
+  gap: 11; 
+  grid-template-rows: auto 1fr auto;
+}
