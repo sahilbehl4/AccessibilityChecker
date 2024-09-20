@@ -120,6 +120,7 @@ export default class ValidationLink {
     //  create results
 
     public static async runTest(testId: string): Promise<Run | undefined> {
+        console.log("runTest" + testId)
         const params: ParamsToRunTest = {
             /** Test id. */
             testId: testId,
@@ -134,6 +135,7 @@ export default class ValidationLink {
 
     // Get all runs for a given iTwin.
     public static async getRuns(): Promise<RunDetails[]> {
+        console.log("getRuns")
         const params: ParamsToGetRunList = {
             urlParams: {
                 projectId: process.env.IMJS_ITWIN_ID!

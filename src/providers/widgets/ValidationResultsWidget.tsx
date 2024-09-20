@@ -121,7 +121,7 @@ export function ValidationResultsWidget() {
         //   material = ruleDetails.material.label;
         // const temperature = `${ruleDetails.tempLow} °F  - ${ruleDetails.tempHigh} °F`;
         // const insulation = `${ruleDetails.insulationLow} inch - ${ruleDetails.insulationHigh} inch`;
-        const badValue = "30"
+        const badValue = validationType == "Door Width" ? "1400" : "15"
         let range = extractNumbers(allowedRange)
         console.log(range)
         let badValueNumber = parseFloat(badValue);
@@ -130,12 +130,17 @@ export function ValidationResultsWidget() {
         console.log(badValueNumber >= range[0])
         console.log(badValueNumber <= range[1])
 
+        let badValueString = finalResult ? "-" : (badValue + (validationType == "Door Width" ? " mm" : " °"))
+        let allowedRangeString = validationType == "Door Width" ? range[0] + " mm - 99999 mm" : range[0] + "° - " + range[1] + "°"
+
+        console.log(allowedRangeString)
+
         // push result entry into table data.
         data.push({
           validationType,
-          allowedRange,
+          allowedRange: allowedRangeString,
           objectId: finalResult ? "-" : objectId,
-          badValue: finalResult ? "-" : badValue + "°",
+          badValue: badValueString,
           result: finalResult ? "Pass" : "Fail"
         });
       }

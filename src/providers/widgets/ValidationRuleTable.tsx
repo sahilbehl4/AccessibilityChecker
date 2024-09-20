@@ -56,9 +56,11 @@ export const ValidationRuleTable: React.FC<{ ruleList: RuleDetails[], rulesSelec
     for (const rule of ruleList) {
       let criteria = rule.displayName;
 
+      let ruleString = rule.description + (criteria == "Door Width" ? " mm" : " (degrees)");
+
       data.push({
         criteria,
-        range: rule.description,
+        range: ruleString,
       });
     }
 

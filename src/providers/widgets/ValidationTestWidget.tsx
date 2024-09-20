@@ -155,7 +155,8 @@ export function ValidationTestWidget() {
 
   // Run validation test, and fetch latest data for run status.
   const runValidationTest = async (testId: string) => {
-    await ValidationLink.runTest(testId);
+    await ValidationLink.runTest(testId)
+    .catch(console.error);
     fetchValidationTests();
   };
 
@@ -237,7 +238,10 @@ export function ValidationTestWidget() {
         />
         <div style={{ display: "flex", gap: 8, justifyContent: "end" }}>
           <Button onClick={() => setAddNewRule(true)}>Add Rule</Button>
-          <Button styleType="high-visibility" onClick={createTest}>
+          <Button 
+            styleType="high-visibility" 
+            disabled={testName.length === 0 || selectedRuleIds.length === 0}
+            onClick={createTest}>
             Create
           </Button>
         </div>
